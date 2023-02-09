@@ -24,7 +24,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="433bc" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="433bc" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="20" left="20" bottom="20" right="20"/>
                 <constraints/>
                 <properties>
@@ -32,41 +32,37 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="db565" class="javax.swing.JList" binding="DanmaList">
+                  <component id="65bb" class="javax.swing.JLabel" binding="RoomInfo">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
-                      <focusable value="false"/>
+                      <text value="&lt;html&gt;&lt;body&gt;&lt;h1&gt;RoomInfo&lt;/h1&gt;No RoomInfo Detected!&lt;/body&gt;&lt;/html&gt;"/>
                     </properties>
                   </component>
+                  <grid id="fd943" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="20" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="db565" class="javax.swing.JList" binding="DanmaList">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <focusable value="false"/>
+                          <model/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
                 </children>
               </grid>
             </children>
           </scrollpane>
-          <grid id="88309" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="20" left="20" bottom="20" right="20"/>
-            <constraints>
-              <tabbedpane title="RoomInfo"/>
-            </constraints>
-            <properties/>
-            <border type="none"/>
-            <children>
-              <component id="12dab" class="javax.swing.JLabel" binding="RoomInfo">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="&lt;html&gt;&lt;body&gt;&lt;h1&gt;RoomInfo&lt;/h1&gt;No RoomInfo Detected!&lt;/body&gt;&lt;/html&gt;"/>
-                </properties>
-              </component>
-              <vspacer id="22148">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </vspacer>
-            </children>
-          </grid>
           <scrollpane id="57519">
             <constraints>
               <tabbedpane title="Settings"/>
@@ -74,7 +70,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="d8b8f" binding="Setting" layout-manager="GridLayoutManager" row-count="9" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="d8b8f" binding="Setting" layout-manager="GridLayoutManager" row-count="10" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="20" left="20" bottom="20" right="20"/>
                 <constraints/>
                 <properties/>
@@ -99,7 +95,7 @@
                       <component id="86049" class="javax.swing.JTextField" binding="ListenPortInput">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
+                            <preferred-size width="300" height="-1"/>
                           </grid>
                         </constraints>
                         <properties>
@@ -127,7 +123,7 @@
                       <component id="8abb1" class="javax.swing.JTextField" binding="ListenRoomInput">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
+                            <preferred-size width="300" height="-1"/>
                           </grid>
                         </constraints>
                         <properties/>
@@ -153,7 +149,7 @@
                       <component id="51daa" class="javax.swing.JTextField" binding="MiddlewareArgsInput">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
+                            <preferred-size width="300" height="-1"/>
                           </grid>
                         </constraints>
                         <properties>
@@ -164,13 +160,13 @@
                   </grid>
                   <vspacer id="94811">
                     <constraints>
-                      <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </vspacer>
                   <grid id="ea5ce" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -213,7 +209,7 @@
                   <grid id="11f8e" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -230,38 +226,12 @@
                       <component id="be138" class="javax.swing.JTextField" binding="MessageKeepCounter">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
+                            <preferred-size width="300" height="-1"/>
                           </grid>
                         </constraints>
                         <properties>
-                          <text value="15"/>
+                          <text value="20"/>
                         </properties>
-                      </component>
-                    </children>
-                  </grid>
-                  <grid id="196bb" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                    <border type="none"/>
-                    <children>
-                      <component id="eb615" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="AccessTooken"/>
-                        </properties>
-                      </component>
-                      <component id="3c161" class="javax.swing.JPasswordField" binding="AccessTokenInput">
-                        <constraints>
-                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                        </constraints>
-                        <properties/>
                       </component>
                     </children>
                   </grid>
@@ -278,17 +248,17 @@
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="RefreshFrequency"/>
+                          <text value="RefreshFrequency(ms)"/>
                         </properties>
                       </component>
                       <component id="d3bc9" class="javax.swing.JTextField" binding="RefreshFrequencyInput">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
+                            <preferred-size width="300" height="-1"/>
                           </grid>
                         </constraints>
                         <properties>
-                          <text value="3000"/>
+                          <text value="1000"/>
                         </properties>
                       </component>
                     </children>
@@ -312,7 +282,7 @@
                       <component id="70900" class="javax.swing.JComboBox" binding="MiddlewareModeComboBox">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
+                            <preferred-size width="300" height="-1"/>
                           </grid>
                         </constraints>
                         <properties>
@@ -321,6 +291,89 @@
                       </component>
                     </children>
                   </grid>
+                  <grid id="385de" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="5db75" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="TimeFormat"/>
+                        </properties>
+                      </component>
+                      <component id="76560" class="javax.swing.JComboBox" binding="TimeFormatComboBox">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="300" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <editable value="false"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="196bb" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="eb615" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="MiddlewareToken"/>
+                        </properties>
+                      </component>
+                      <component id="3c161" class="javax.swing.JPasswordField" binding="AccessTokenInput">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="300" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
+          </scrollpane>
+          <scrollpane id="85ce6">
+            <constraints>
+              <tabbedpane title="About"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <grid id="3b3bb" binding="About" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="20" left="20" bottom="20" right="20"/>
+                <constraints/>
+                <properties/>
+                <clientProperties>
+                  <html.disable class="java.lang.Boolean" value="false"/>
+                </clientProperties>
+                <border type="none"/>
+                <children>
+                  <component id="10a12" class="javax.swing.JLabel" binding="AboutPluginText">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <labelFor value="85ce6"/>
+                      <text value="&lt;html&gt;&lt;body&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;p&gt;Plugin Version: 1.1 SNAPSHOT&lt;/p&gt;&lt;p&gt;GitHub: &lt;a href=&quot;https://github.com/sunist-c/Bililive-Danmaku&quot;&gt;sunist-c/Bililive-Danmaku&lt;/a&gt;&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;h1&gt;How to use&lt;/h1&gt;&lt;p&gt;Just support Manual Mode now&lt;/p&gt;&lt;p&gt;1. Get &lt;a href=&quot;https://github.com/sunist-c/bililive-danmaku-backend/releases/tag/release&quot;&gt;sunist-c/Bililive-Danmaku-Backend&lt;/a&gt; on GitHub and run it&lt;/p&gt;&lt;p&gt;2. Fill out arguments in IDEA plugin fields with your configuration&lt;/p&gt;&lt;p&gt;3. Click &quot;Connect&quot; button and enjoy&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>
+                    </properties>
+                  </component>
                 </children>
               </grid>
             </children>

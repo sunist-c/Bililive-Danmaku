@@ -21,8 +21,6 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
 public class Danmaku {
     // UI Components
     private JTabbedPane TabbedPanel;
@@ -32,17 +30,19 @@ public class Danmaku {
     private JTextField ListenRoomInput;
     private JButton ConnectButton;
     private JTextField MiddlewareArgsInput;
-    private JLabel RoomInfo;
     private JButton DisconnectButton;
     private JLabel StatusLabel;
     private JTextField MessageKeepCounter;
     private JPasswordField AccessTokenInput;
     private JTextField RefreshFrequencyInput;
     private JComboBox<String> MiddlewareModeComboBox;
+    private JLabel RoomInfo;
+    private JComboBox<String> TimeFormatComboBox;
 
     // ViewModels
     private final DefaultListModel<String> viewModel = new DefaultListModel<String>();
-    private final DefaultComboBoxModel<String> choices = new DefaultComboBoxModel<String>();
+    private final DefaultComboBoxModel<String> modeChoices = new DefaultComboBoxModel<String>();
+    private final DefaultComboBoxModel<String> timeFormatChoices = new DefaultComboBoxModel<String>();
     private Boolean refreshTaskInitialized = false;
 
     // Private Attributes
@@ -58,6 +58,7 @@ public class Danmaku {
     private String accessToken;
     private Boolean readyToServe = false;
     private String backendUrl = "";
+    private String timeFormat = "HH:mm:ss";
 
     /**
      * Return time.Now with formatted hh:mm:ss
@@ -66,7 +67,7 @@ public class Danmaku {
      */
     private @NotNull String now() {
         Date date = new Date();
-        SimpleDateFormat dateFormat= new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat dateFormat= new SimpleDateFormat(timeFormat);
         return dateFormat.format(date);
     }
 
@@ -120,14 +121,25 @@ public class Danmaku {
         ListenPortInput.setText("8086");
         ListenRoomInput.setText("");
         AccessTokenInput.setText("");
-        choices.removeAllElements();
-        choices.addElement("Manual");
-        choices.addElement("Docker");
-        choices.addElement("Backend");
+
+        modeChoices.removeAllElements();
+        modeChoices.addElement("Manual");
+//        modeChoices.addElement("Docker");
+//        modeChoices.addElement("Backend");
+        MiddlewareModeComboBox.setModel(modeChoices);
+
+        timeFormatChoices.removeAllElements();
+        timeFormatChoices.addElement("yyyy-MM-dd HH:mm:ss");
+        timeFormatChoices.addElement("yyyy-MM-dd hh:mm:ss");
+        timeFormatChoices.addElement("HH:mm:ss");
+        timeFormatChoices.addElement("hh:mm:ss");
+        timeFormatChoices.addElement("HH:mm");
+        timeFormatChoices.addElement("hh:mm");
+        TimeFormatComboBox.setModel(timeFormatChoices);
+
         MiddlewareArgsInput.setText("http://127.0.0.1:18080");
-        MiddlewareModeComboBox.setModel(choices);
-        MessageKeepCounter.setText("15");
-        RefreshFrequencyInput.setText("3000");
+        MessageKeepCounter.setText("20");
+        RefreshFrequencyInput.setText("1000");
     }
 
     /**
@@ -142,6 +154,7 @@ public class Danmaku {
         messageKeepCount = parseJTextFieldToInteger(MessageKeepCounter, 15);
         accessToken = new String(AccessTokenInput.getPassword());
         refreshFrequency = parseJTextFieldToInteger(RefreshFrequencyInput, 3000);
+        timeFormat = (String) TimeFormatComboBox.getSelectedItem();
 
         if (StringUtils.isBlank(startArgs)) {
             readyToServe = false;
@@ -247,7 +260,6 @@ public class Danmaku {
     private boolean getRoomInfo() {
         try {
             GetRoomInfoRequest request = new GetRoomInfoRequest();
-            GetRoomInfoResponse response = new GetRoomInfoResponse();
 
             request.baseRouter = "http://localhost:" + listenPort;
             request.room_id = roomId;
@@ -258,14 +270,16 @@ public class Danmaku {
             request.audienceRouter = "welcome";
             request.fansRouter = "custom_message";
             request.customMessage = "custom_message";
+            request.exitRouter = "exit_callback";
 
             String jsonString = client.DoPostRequest(backendUrl + "/register", request, accessToken);
             if (StringUtils.isBlank(jsonString)) {
                 System.out.println("Failed to register");
                 return false;
             } else {
+                System.out.println(jsonString);
                 Gson gson = new Gson();
-                response = gson.fromJson(jsonString, GetRoomInfoResponse.class);
+                GetRoomInfoResponse response = gson.fromJson(jsonString, GetRoomInfoResponse.class);
                 UpdateRoomInfo(
                         response.room_id,
                         response.up_uid,
@@ -336,28 +350,31 @@ public class Danmaku {
         }
     }
 
-    private boolean disconnectToRoom() {
+    private void disconnectToRoom() {
         CloseableHttpClient httpClient = client.getHttpClient();
-        HttpDelete delete = new HttpDelete(backendUrl + "/channel/" + roomId);
-        delete.addHeader("Accept", "application/json");
-        delete.addHeader("Content-Type", "application/json");
-        delete.addHeader("Authorization", "Bearer " + accessToken);
+        HttpDelete deleteRequest = new HttpDelete(backendUrl + "/channel/" + roomId);
+        deleteRequest.addHeader("Accept", "application/json");
+        deleteRequest.addHeader("Content-Type", "application/json");
+        deleteRequest.addHeader("Authorization", "Bearer " + accessToken);
 
         try {
-            CloseableHttpResponse response = httpClient.execute(delete);
+            CloseableHttpResponse response = httpClient.execute(deleteRequest);
             StatusLine status = response.getStatusLine();
             if (status.getStatusCode() != 200) {
                 System.out.println("Bad response code: " + status.getStatusCode());
-                return false;
+                return;
             }
 
             InputStream is = response.getEntity().getContent();
-            byte[] bytes = is.readAllBytes();
             is.close();
-            return "success".equals(new String(bytes, UTF_8));
         } catch (Exception e) {
-            return false;
+            System.out.println(e.getMessage());
         }
+    }
+
+    public void exitRoom() {
+        reset();
+        Messages.showMessageDialog("Exited room: " + roomId + " with middleware notification", "Information", null);
     }
 
     private void setRefreshTask() {
@@ -460,6 +477,7 @@ public class Danmaku {
         AccessTokenInput.setEnabled(true);
         MessageKeepCounter.setEnabled(true);
         MiddlewareModeComboBox.setEnabled(true);
+        TimeFormatComboBox.setEnabled(true);
         viewModel.removeAllElements();
     }
 
@@ -473,5 +491,12 @@ public class Danmaku {
         MessageKeepCounter.setEnabled(false);
         MiddlewareModeComboBox.setEnabled(false);
         RefreshFrequencyInput.setEnabled(false);
+        TimeFormatComboBox.setEnabled(false);
+    }
+
+    public void error(String errorMessage) {
+        disconnectToRoom();
+        reset();
+        StatusLabel.setText("Error: " + errorMessage);
     }
 }

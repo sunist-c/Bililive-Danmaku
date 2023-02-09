@@ -10,4 +10,5 @@ public class GetRoomInfoRequest {
     public String audienceRouter;
     public String fansRouter;
     public String customMessage;
+    public String exitRouter;
 }
