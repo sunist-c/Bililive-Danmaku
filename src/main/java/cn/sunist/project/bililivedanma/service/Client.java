@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 public class Client {
-    private final CloseableHttpClient client = HttpClients.createDefault();
+    private CloseableHttpClient client = HttpClients.createDefault();
 
     /**
      * Convert Object to any class
@@ -40,6 +40,10 @@ public class Client {
      * @author sunist-c
      */
     public String DoPostRequest(String url, Object requestBody, String accessToken) throws Exception{
+        if (client == null) {
+            client = HttpClients.createDefault();
+        }
+
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader("Accept", "application/json");
         httpPost.addHeader("Content-Type", "application/json");
@@ -70,6 +74,10 @@ public class Client {
     }
 
     public CloseableHttpClient getHttpClient() {
+        if (client == null) {
+            client = HttpClients.createDefault();
+        }
+
         return client;
     }
 }
