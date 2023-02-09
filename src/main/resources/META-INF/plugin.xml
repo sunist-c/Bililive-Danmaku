@@ -29,7 +29,7 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="cn.sunist.project.bililivedanma.factory.DanmaWindowFactory" id="Danma"
-                    anchor="right" secondary="false"/>
+                    anchor="right" secondary="false" icon="/icons/bili.svg"/>
     </extensions>
     <actions>
 

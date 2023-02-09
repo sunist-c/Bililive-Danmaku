@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "cn.sunist.project"
-version = "1.0-SNAPSHOT"
+version = "1.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -28,7 +28,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("212")
-        untilBuild.set("222.*")
+        untilBuild.set("312.*")
     }
 
     signPlugin {
