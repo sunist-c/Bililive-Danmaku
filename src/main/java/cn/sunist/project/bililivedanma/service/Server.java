@@ -16,7 +16,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Server {
     private HttpServer httpServer;
-    private Danmaku danmaku;
+    private final Danmaku danmaku;
 
     public boolean Started() {
         return httpServer != null;
@@ -150,11 +150,29 @@ public class Server {
         }
     }
 
+    private void exitHandler(@NotNull HttpExchange exchange) throws IOException {
+        String method = exchange.getRequestMethod();
+
+        // Method Filter
+        if (method.equals("POST")) {
+            InputStream is = exchange.getRequestBody();
+            is.close();
+            danmaku.exitRoom();
+        }
+
+        // Method Not Allowed
+        else {
+            exchange.sendResponseHeaders(405, 0);
+            exchange.getResponseBody().close();
+        }
+    }
+
     private void bindHandlers() {
         httpServer.createContext("/gift", this::giftHandler);
         httpServer.createContext("/dm", this::dmHandler);
         httpServer.createContext("/custom_message", this::customMessageHandler);
         httpServer.createContext("/welcome", this::welcomeHandler);
+        httpServer.createContext("/exit_callback", this::exitHandler);
     }
 
     public Server(int port, Danmaku danmaku) {
