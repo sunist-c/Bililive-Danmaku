@@ -356,7 +356,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="3b3bb" binding="About" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="3b3bb" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="20" left="20" bottom="20" right="20"/>
                 <constraints/>
                 <properties/>
@@ -365,7 +365,7 @@
                 </clientProperties>
                 <border type="none"/>
                 <children>
-                  <component id="10a12" class="javax.swing.JLabel" binding="AboutPluginText">
+                  <component id="10a12" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
