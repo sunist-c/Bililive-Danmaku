@@ -371,7 +371,7 @@
                     </constraints>
                     <properties>
                       <labelFor value="85ce6"/>
-                      <text value="&lt;html&gt;&lt;body&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;p&gt;Plugin Version: 1.1 SNAPSHOT&lt;/p&gt;&lt;p&gt;GitHub: &lt;a href=&quot;https://github.com/sunist-c/Bililive-Danmaku&quot;&gt;sunist-c/Bililive-Danmaku&lt;/a&gt;&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;h1&gt;How to use&lt;/h1&gt;&lt;p&gt;Just support Manual Mode now&lt;/p&gt;&lt;p&gt;1. Get &lt;a href=&quot;https://github.com/sunist-c/bililive-danmaku-backend/releases/tag/release&quot;&gt;sunist-c/Bililive-Danmaku-Backend&lt;/a&gt; on GitHub and run it&lt;/p&gt;&lt;p&gt;2. Fill out arguments in IDEA plugin fields with your configuration&lt;/p&gt;&lt;p&gt;3. Click &quot;Connect&quot; button and enjoy&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>
+                      <text resource-bundle="properties/static" key="about.text"/>
                     </properties>
                   </component>
                 </children>
